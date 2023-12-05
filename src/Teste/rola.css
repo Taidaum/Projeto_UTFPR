@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Isso centralizará verticalmente na tela inteira, ajuste conforme necessário */
+  }
+  
+.form{
+    margin-bottom: 20px;
+}
+
+.img {
+    max-width: 100%; /* Garante que a imagem não seja maior que o contêiner */
+    align-items: center;
+    padding: 10px;
+}
+
+.btn{
+    margin-top: 20px;
+}
+  
+.App-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
