@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { AuthUser } from '../services/auth';
 import { setJwtToken } from '../Utils/token';
 
 
 function Login() {
+    const navigate = useNavigate();
     const [login, setlogin] = useState({ email: '', password: '' })
-    
-    const handleLogin = async()=>{
-        const user = await AuthUser({
-            email: 'adfadsf',
-            password: "asdfsdf"
-        });
 
-        setJwtToken(user.token);
+    const handleLogin = async () => {
+        try {
+            const user = await AuthUser(login);
+            setJwtToken(user.token);
+            navigate("/select");
+        } catch (error) {
+
+        }
     }
-    
+
     return (
-        <div classname="login">
+        <div className="login">
             <header className='Tela Login'>
                 <h1>Login</h1>
 
@@ -31,18 +33,24 @@ function Login() {
                         <legend>Your credentials</legend>
                         <div className='email'>
                             <label className='email2'>Email: <em class="required"> *</em></label>
-                            <input type='text' value={login.email} onChange={(e) => {
-                                const temp = e.target.value;
-                                setlogin({ ...login, email: temp })
-                            }}></input>
+                            <input
+                                type='text'
+                                value={login.email}
+                                onChange={(e) => {
+                                    const temp = e.target.value;
+                                    setlogin({ ...login, email: temp })
+                                }} />
                         </div>
 
                         <div className='senha'>
                             <label className='senha2'>Senha: <em class="required"> *</em></label>
-                            <input type='password' value={login.password} onChange={(e) => {
-                                const temp = e.target.value;
-                                setlogin({ ...login, password: temp })
-                            }}></input>
+                            <input
+                                type='password'
+                                value={login.password}
+                                onChange={(e) => {
+                                    const temp = e.target.value;
+                                    setlogin({ ...login, password: temp })
+                                }} />
                         </div>
                         <button type="button" className="btn btn-primary btn-lg" onClick={handleLogin}>Submit</button>
                     </fieldset>

@@ -1,6 +1,5 @@
 import Api from '.';
 
-
 export const ListUser = async () => {
     const { data } = await Api.get('/user');
     return data;
@@ -22,6 +21,6 @@ export const EditUser = async (model) => {
 };
 
 export const DeleteUser = async (id) => {
-    const { data } = await Api.delete('/user', id);
+    const { data } = await Api.delete(`/user/${id}`,);
     return data;
 };

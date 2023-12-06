@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getJwtToken } from '../Utils/token.js';
 
 const Api = axios.create({
-  baseURL: process.env.REACT_APP,
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
     Authorization: `Bearer ${getJwtToken()}`,
     'x-api-version': 1
